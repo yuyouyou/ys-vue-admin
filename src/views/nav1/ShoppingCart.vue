@@ -34,10 +34,10 @@ export default {
     },
     methods: {
         reduceGoods(id) {
-            this.$store.commit('REDUCE_CART', id)
+            this.$store.commit('reduceGoods', id)
         },
         addGoods(id) {
-            this.$store.commit('ADD_CART', id)
+            this.$store.commit('addGoods', id)
         }
     }
 }
