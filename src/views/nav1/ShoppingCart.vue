@@ -24,7 +24,9 @@
 </template>
 
 <script>
+import {mapState,mapGetters,mapMutations} from 'vuex';// 对应着store中的state,getters,mutations
 export default {
+    name: 'Goods',
     data() {
         return {
             /*goods: this.$store.state.goods,
@@ -32,13 +34,34 @@ export default {
             totalPrice: this.$store.state.totalPrice*/
         }
     },
+    computed:{
+        // 辅助函数的方式
+        ...mapState(['goods']),
+        ...mapGetters(['totalPrice','totalNum'])
+        /**
+            ‘...’ 为ES6中的扩展运算符
+            如果使用的名称和store中的一样，直接写成上面数组的形式就行，
+            反之，写法如下
+            ...mapState({
+                goodsData: state => state.goods
+            })
+        **/
+    },
     methods: {
-        reduceGoods(id) {
+        // 不用辅助函数的方式
+        /*reduceGoods(id) {
             this.$store.commit('reduceGoods', id)
         },
         addGoods(id) {
             this.$store.commit('addGoods', id)
-        }
+        }*/
+        // 辅助函数的方式
+        ...mapMutations(['reduceGoods','addGoods'])
+        /**
+            相当于直接调用了store中的方法
+            reduceGoods(id){},
+            addGoods(id){}
+        **/
     }
 }
 </script>
