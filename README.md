@@ -3,11 +3,20 @@
 vue + element-ui
 
 
-### 启动项目
+## Build Setup
 
-``` base
-npm i
-npm start     // vue开发环境 webpack 编译 + 启动本地资源服务器
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
 ```
 
 ## 样式scoped

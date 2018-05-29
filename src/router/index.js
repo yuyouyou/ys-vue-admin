@@ -2,7 +2,7 @@ import Login from '../views/Login.vue'
 import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 import Table from '../views/nav1/Table.vue'
-import ShoppingCart from '../views/nav1/ShoppingCart.vue'
+import ShopCart from '../views/nav1/ShopCart.vue'
 import List from '../views/nav1/List.vue'
 import echarts from '../views/echarts/echarts.vue'
 
@@ -21,7 +21,7 @@ let routes = [
     children: [
         { path: '/main', component: Main, name: '主页', hidden: true },
         { path: '/table', component: Table, name: '用户列表' },
-        { path: '/shoppingCart', component: ShoppingCart, name: '购物车demo' },
+        { path: '/shopCart', component: ShopCart, name: '购物车(vuex)demo' },
         { path: '/list', component: List, name: 'List' },
     ]
   },

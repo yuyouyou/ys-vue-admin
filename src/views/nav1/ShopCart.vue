@@ -1,24 +1,43 @@
 <template>
   <div>
-      <h1>购物车</h1>
+      <h1>购物车demo</h1>
       <div class="shop-cart-list">
         <ul>
-            <li v-for="item in this.$store.state.shop.goods" :key="item.id" class="shop-cart-item">
+            <li v-for="item in $store.state.shop.goods" :key="item.id" class="shop-cart-item">
                 <div class="shop-cart-title">{{item.title}}</div>
                 <div class="clearfix">
                     <div class="shop-cart-price">￥{{item.price}}</div>
-                    <div class="shop-cart-num">
+                    <!--<div class="shop-cart-num">
                         <span class="reduce" @click="reduceGoods(item.id)">-</span>
                         <span class="num">{{item.num}}</span>
                         <span class="add" @click="addGoods(item.id)">+</span>
+                    </div>-->
+                    <div class="shop-cart-number">
+                        <el-input-number
+                            :min="0" :max="item.total"
+                            v-model="item.num">
+                        </el-input-number>
                     </div>
                 </div>
             </li>
         </ul>
-        <div class="fr">
-            <span>合计:￥{{this.$store.state.shop.totalPrice}}</span>
-            <span style="margin:0 20px;cursor: pointer;">结算({{this.$store.state.shop.totalNum}})</span>
+        <div>
+            <div>你的购物清单：<span v-if="!cartProducts.length">暂无商品</span></div>
+            <ul>
+                <li v-for="item in cartProducts" :key="item.id" class="shop-cart-item">
+                    <div class="shop-cart-title">{{item.title}} - {{item.price}} X {{item.num}}</div>
+                </li>
+            </ul>
         </div>
+        <div class="clearfix">
+            <div class="fr">
+                <span>合计:￥{{totalPrice}}</span>
+                <span style="margin:20px;cursor: pointer;display: inline-block;">结算({{totalNum}})</span>
+            </div>
+        </div>
+        <el-row>
+            <el-button type="primary" plain @click="clearGoods" class="clear-btn">CLEAR</el-button>
+        </el-row>
       </div>
     </div>
 </template>
@@ -37,7 +56,7 @@ export default {
     computed:{
         // 辅助函数的方式
         ...mapState(['goods']),
-        ...mapGetters(['totalPrice','totalNum'])
+        ...mapGetters(['totalPrice','totalNum','cartProducts'])
         /**
             ‘...’ 为ES6中的扩展运算符
             如果使用的名称和store中的一样，直接写成上面数组的形式就行，
@@ -48,25 +67,31 @@ export default {
         **/
     },
     methods: {
-        // 不用辅助函数的方式
+        // 一、不用辅助函数的方式
         /*reduceGoods(id) {
             this.$store.commit('reduceGoods', id)
         },
         addGoods(id) {
             this.$store.commit('addGoods', id)
         }*/
-        // 辅助函数的方式
-        ...mapMutations(['reduceGoods','addGoods'])
+
+        // 二、辅助函数的方式
+        // ...mapMutations(['reduceGoods','addGoods','clearGoods'])
         /**
             相当于直接调用了store中的方法
             reduceGoods(id){},
             addGoods(id){}
         **/
+
+        // 三、直接用el-input-number 改变num值触发状态更改，就不需要addGoods和reduceGoods了
+        ...mapMutations(['clearGoods'])
+
     }
 }
 </script>
 
-<style lang="less">
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="less" scoped>
 .shop-cart {
     &-list {
         width: 365px;
@@ -102,5 +127,13 @@ export default {
             cursor: pointer;
         }
     }
+    &-number {
+        float: right;
+    }
+}
+.clear-btn {
+    margin:20px;
+    cursor: pointer;
+    float:right;
 }
 </style>
