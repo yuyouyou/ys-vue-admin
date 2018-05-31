@@ -2,6 +2,7 @@
 
 vue + element-ui
 
+记录点滴学习。。。
 
 ## Build Setup
 

@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// 修改state时在console打印
+import createLogger from 'vuex/dist/logger'
 import shop from './modules/shop'
+
 Vue.use(Vuex);
+
+const debug = process.env.NODE_ENV !== 'production'
 
 const store = new Vuex.Store({
     state: {
@@ -21,7 +26,10 @@ const store = new Vuex.Store({
     },
     modules: {
         shop
-    }
+    },
+    // 严格模式，非法修改state时报错
+    strict: debug,
+    plugins: debug ? [createLogger()] : []
 })
 
 export default store;

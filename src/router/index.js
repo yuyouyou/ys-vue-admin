@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 import Table from '../views/nav1/Table.vue'
 import ShopCart from '../views/nav1/ShopCart.vue'
-import List from '../views/nav1/List.vue'
+import Lifecycle from '../views/nav1/Lifecycle.vue'
 import echarts from '../views/echarts/echarts.vue'
 
 let routes = [
@@ -20,9 +20,9 @@ let routes = [
     iconCls: 'el-icon-message',//图标样式class
     children: [
         { path: '/main', component: Main, name: '主页', hidden: true },
-        { path: '/table', component: Table, name: '用户列表' },
+        { path: '/table', component: Table, name: '模拟用户列表' },
         { path: '/shopCart', component: ShopCart, name: '购物车(vuex)demo' },
-        { path: '/list', component: List, name: 'List' },
+        { path: '/lifecycle', component: Lifecycle, name: '生命周期' },
     ]
   },
   {
