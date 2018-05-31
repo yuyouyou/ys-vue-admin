@@ -5,6 +5,7 @@ import Table from '../views/nav1/Table.vue'
 import ShopCart from '../views/nav1/ShopCart.vue'
 import Lifecycle from '../views/nav1/Lifecycle.vue'
 import echarts from '../views/echarts/echarts.vue'
+import Comp from '../views/comp/Comp.vue'
 
 let routes = [
   {
@@ -32,6 +33,15 @@ let routes = [
       iconCls: 'fa fa-bar-chart',
       children: [
           { path: '/echarts', component: echarts, name: 'echarts' }
+      ]
+  },
+  {
+      path: '/',
+      component: Home,
+      name: '导航三',
+      iconCls: 'fa fa-bar-chart',
+      children: [
+          { path: '/comp', component: Comp, name: '组件及数据传递' }
       ]
   }
 ]
