@@ -1,6 +1,5 @@
 <template>
   <div class="comp-box">
-    <comp-header :count="count"></comp-header>
     <div class="clearfix">
       <div class="fl side-box">
         <comp-side :count="count" @change="handleChange"></comp-side>
@@ -9,13 +8,10 @@
         <comp-body @add="updateCount" @reset="resetCount"></comp-body>
       </div>
     </div>
-    <comp-footer />
   </div>
 </template>
 
 <script>
-import compHeader from './compHeader'
-import compFooter from './compFooter'
 import compBody from './compBody'
 import compSide from './compSide'
 
@@ -38,20 +34,16 @@ export default {
     }
   },
   components: {
-    compHeader,
-    compFooter,
     compBody,
     compSide
   }
 }
 </script>
 <style lang="less">
-  .comp-box {
-  }
   .side-box {
-    width: 15%;
+    width: 30%;
   }
   .body-box {
-    width: 85%;
+    width: 70%;
   }
 </style>

@@ -6,6 +6,7 @@ import ShopCart from '../views/nav1/ShopCart.vue'
 import Lifecycle from '../views/nav1/Lifecycle.vue'
 import echarts from '../views/echarts/echarts.vue'
 import Comp from '../views/comp/Comp.vue'
+import Compbus from '../views/compbus/Compbus.vue'
 
 let routes = [
   {
@@ -41,7 +42,8 @@ let routes = [
       name: '导航三',
       iconCls: 'fa fa-bar-chart',
       children: [
-          { path: '/comp', component: Comp, name: '组件及数据传递' }
+          { path: '/comp', component: Comp, name: '父子组件及互相通信' },
+          { path: '/compbus', component: Compbus, name: '非父子组件的通信' }
       ]
   }
 ]

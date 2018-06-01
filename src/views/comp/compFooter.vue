@@ -1,5 +1,5 @@
 <template>
-  <div class="comp-footer">我是头部</div>
+  <div class="comp-footer">我是底部</div>
 </template>
 <script>
 export default {

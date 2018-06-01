@@ -46,6 +46,9 @@ new Vue({
   // template: '<App/>',
   router,
   store,
+  data: {
+    rootNum: 0
+  },
   // components: { App }
   render: h => h(App)
 }).$mount('#app')

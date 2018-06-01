@@ -1,17 +1,33 @@
 <template>
   <div class="comp-side">
-    <el-button type="primary" plain @click="updateCount">更新计数</el-button>
-    <el-button type="success" plain @click="resetCount">重置</el-button>
+    <el-input-number v-model="currentVal" @change="handleChange" :min="0" label="计数"></el-input-number>
   </div>
 </template>
 <script>
 export default {
+  props: {
+      count: {
+          type: Number,
+          default: 0
+      }
+  },
+  data() {
+    return {
+      currentVal: 0
+    }
+  },
   methods: {
-    updateCount() {
-      this.$emit('add');
-    },
-    resetCount() {
-      this.$emit('reset');
+    handleChange (val) {
+      this.$emit('change',val)
+    }
+  },
+  // 外层数据改变时，currentVal值需要同步修改
+  watch: {
+    count: {
+      handler (val) {
+        this.currentVal = val
+      },
+      immediate: true
     }
   }
 }

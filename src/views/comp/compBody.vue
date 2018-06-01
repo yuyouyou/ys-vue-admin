@@ -1,33 +1,21 @@
 <template>
   <div class="comp-body">
-    <el-input-number v-model="currentVal" @change="handleChange" :min="0" label="计数"></el-input-number>
+    <el-button type="primary" plain @click="updateCount">更新计数</el-button>
+    <el-button type="success" plain @click="resetCount">重置</el-button>
+    <el-button type="warning" plain @click="add">根实例的rootNum: {{ this.$root.rootNum }}</el-button>
   </div>
 </template>
 <script>
 export default {
-  props: {
-      count: {
-          type: Number,
-          default: 0
-      }
-  },
-  data() {
-    return {
-      currentVal: 0
-    }
-  },
   methods: {
-    handleChange (val) {
-      this.$emit('change',val)
-    }
-  },
-  // 外层数据改变时，currentVal值需要同步修改
-  watch: {
-    count: {
-      handler (val) {
-        this.currentVal = val
-      },
-      immediate: true
+    updateCount() {
+      this.$emit('add');
+    },
+    resetCount() {
+      this.$emit('reset');
+    },
+    add () {
+      this.$root.rootNum ++
     }
   }
 }
