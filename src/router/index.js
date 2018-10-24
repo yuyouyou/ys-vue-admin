@@ -7,6 +7,7 @@ import Lifecycle from '../views/nav1/Lifecycle.vue'
 import echarts from '../views/echarts/echarts.vue'
 import Comp from '../views/comp/Comp.vue'
 import Compbus from '../views/compbus/Compbus.vue'
+import Directive from '../views/directive/Directive.vue'
 
 let routes = [
   {
@@ -44,6 +45,15 @@ let routes = [
       children: [
           { path: '/comp', component: Comp, name: '父子组件及互相通信' },
           { path: '/compbus', component: Compbus, name: '非父子组件的通信' }
+      ]
+  },
+  {
+      path: '/',
+      component: Home,
+      name: '导航四',
+      iconCls: 'fa fa-bar-chart',
+      children: [
+          { path: '/directive', component: Directive, name: '自定义指令' }
       ]
   }
 ]
