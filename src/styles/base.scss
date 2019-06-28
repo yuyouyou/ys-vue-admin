@@ -324,3 +324,18 @@ textarea:checked::before {
   font-size: 0;
   overflow: hidden;
 }
+
+// echart test
+.grid-content,
+.content-wrapper,
+.bar-chart,
+.pie-ringchart,
+.fin-line {
+  width: 100%;
+  height: 100%;
+}
+
+.module-container,
+.content-wrapper {
+  background-color: #f2f2f2!important;
+}

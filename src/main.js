@@ -22,6 +22,11 @@ Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
+// vue-echarts
+import ECharts from 'vue-echarts/components/ECharts'
+import 'echarts/lib/chart/line'
+Vue.component('chart', ECharts)
+
 const router = new VueRouter({
   mode: 'history',
   routes
