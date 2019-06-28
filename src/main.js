@@ -12,6 +12,7 @@ import routes from './router'
 //import store from './vuex/store'
 import store from './store/index'
 import Mock from './mock'
+import './plugins/jquery-vendor'
 import 'font-awesome/css/font-awesome.min.css'
 Mock.funAdapter();
 
