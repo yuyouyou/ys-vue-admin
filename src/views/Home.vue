@@ -2,7 +2,13 @@
   <el-row class="container">
     <el-col :span="24" class="header">
         <el-col :span="10" class="logo logo-width">
-            {{sysName}}
+            <span
+								class="change-theme"
+									@click="change(item)"
+									v-for="(item, i) in list"
+									:key="i"
+									:style="{ background: item.value }"
+								></span>
         </el-col>
         <el-col :span="10">
             <div class="tools">
@@ -12,7 +18,7 @@
         <el-col :span="4" class="userinfo">
             <el-dropdown trigger="hover">
                 <span class="el-dropdown-link userinfo-inner">
-                    <img :src="this.sysUserAvatar" /> {{sysUserName}}
+                    {{sysUserName}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>我的消息</el-dropdown-item>
@@ -57,13 +63,18 @@
 </template>
 
 <script>
+const list = [
+	{ label: '红色', value: '#F44336', key: 'red' },
+	{ label: '紫色', value: '#7B7DE5', key: 'purple' }
+]
 	export default {
 		data() {
 			return {
 				sysName:'VUEADMIN',
 				collapsed:false,
 				sysUserName: '',
-				sysUserAvatar: ''
+				sysUserAvatar: '',
+				list
 			}
 		},
 		methods: {
@@ -74,6 +85,12 @@
 				//console.log('handleclose');
 			},
 			handleselect: function (a, b) {
+			},
+			// 切换主题色
+			change(val) {
+				localStorage.theme = val.value
+				document.body.className = 'body-theme-' + val.key
+				document.documentElement.style.setProperty('--Main', val.value)
 			},
 			//退出登录
 			logout: function () {
@@ -112,7 +129,7 @@
 		.header {
 			height: 60px;
 			line-height: 60px;
-			background: $color-primary;
+			background: #475669;
 			color:#fff;
 			.userinfo {
 				text-align: right;
@@ -165,9 +182,9 @@
 		.main {
 			display: flex;
 			// background: #324057;
-			position: absolute;
+			/* position: absolute;
 			top: 60px;
-			bottom: 0px;
+			bottom: 0px; */
 			overflow: hidden;
 			aside {
 				flex:0 0 230px;
@@ -228,6 +245,11 @@
 					box-sizing: border-box;
 				}
 			}
+		}
+		.change-theme {
+			width: 60px;
+			height: 60px;
+			display: inline-block;
 		}
 	}
 </style>
