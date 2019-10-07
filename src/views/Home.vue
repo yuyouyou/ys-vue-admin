@@ -119,8 +119,8 @@ const list = [
 </script>
 
 <style scoped lang="scss">
-	@import '~scss_vars';
-	
+	//@import '~scss_vars';
+
 	.container {
 		position: absolute;
 		top: 0px;

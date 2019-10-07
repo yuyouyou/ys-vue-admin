@@ -1,4 +1,5 @@
 import Login from '../views/Login.vue'
+import VueFormMaker from '../views/VueFormMaker.vue'
 import Home from '../views/Home.vue'
 import Main from '../views/Main.vue'
 import Table from '../views/nav1/Table.vue'
@@ -17,7 +18,8 @@ let routes = [
     name: '',
     component: Login,
     hidden: true
-  }, {
+  },
+  {
     path: '/woDashBoard',
     name: 'woDashBoard',
     component: woDashBoard
@@ -36,6 +38,7 @@ let routes = [
       { path: '/table', component: Table, name: '模拟用户列表' },
       { path: '/shopCart', component: ShopCart, name: '购物车(vuex)demo' },
       { path: '/lifecycle', component: Lifecycle, name: '生命周期' },
+      { path: '/VueFormMaker', component: VueFormMaker, name: 'vue自动生成表单组件' },
     ]
   },
   {
